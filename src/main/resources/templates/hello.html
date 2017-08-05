@@ -3,40 +3,63 @@
 <head>
     <title>hello</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <script type='text/javascript' src='webjars/jquery/2.2.4/jquery.js' ></script>
-    <link rel='stylesheet' href='webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
-    <script type='text/javascript' src='webjars/bootstrap/3.3.6/js/bootstrap.min.js' ></script>
+    <script type='text/javascript' src='/webjars/jquery/2.2.4/jquery.js' ></script>
+    <link rel='stylesheet' href='/webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <script type='text/javascript' src='/webjars/bootstrap/3.3.6/js/bootstrap.min.js' ></script>
+    <script type='text/javascript' src="/layer/layer.js"></script>
+    <style>
+        .row{
+            margin-left:0;
+            margin-right:0;
+        }
+    </style>
 </head>
 <body>
-
-<table class="table table-hover">
-    <caption>悬停表格布局</caption>
+<div class="btn-group hidden">
+    <button type="button" class="btn btn-default" id="btn-alert">提示</button>
+</div>
+<br>
+<div class="center-block">
+    <form class="bs-example bs-example-form" role="form">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="input-group">
+                    <input type="text" class="form-control">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">
+							Go!
+						</button>
+					</span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+    </form>
+</div>
+<br>
+<table class="table table-hover table-bordered">
     <thead>
     <tr>
-        <th>名称</th>
-        <th>城市</th>
-        <th>邮编</th>
+        <th>id</th>
+        <th>姓名</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>Tanmay</td>
-        <td>Bangalore</td>
-        <td>560001</td>
-    </tr>
-    <tr>
-        <td>Sachin</td>
-        <td>Mumbai</td>
-        <td>400003</td>
-    </tr>
-    <tr>
-        <td>Uma</td>
-        <td>Pune</td>
-        <td>411027</td>
+    <tr th:each="emp : ${emps}" th:class="${emp.id%2==0}? 'danger' : 'success'">
+        <td th:text="${emp.id}"></td>
+        <td th:text="${emp.name}"></td>
     </tr>
     </tbody>
 </table>
 
 </body>
+
+<script type="text/javascript">
+    $(function(){
+        $("#btn-alert").bind("click",function(){
+            layer.msg('Hello layer');
+        });
+    });
+</script>
+
 </html>
 
