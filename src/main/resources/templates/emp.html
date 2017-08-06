@@ -6,6 +6,8 @@
     <script type='text/javascript' src='/webjars/jquery/2.2.4/jquery.js' ></script>
     <link rel='stylesheet' href='/webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
     <script type='text/javascript' src='/webjars/bootstrap/3.3.6/js/bootstrap.min.js' ></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
     <script type='text/javascript' src="/layer/layer.js"></script>
     <style>
         .row{
@@ -24,9 +26,9 @@
         <div class="row">
             <div class="col-lg-5">
                 <div class="input-group">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="search-condition">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">
+						<button class="btn btn-default" type="button" id="btn-search">
 							Go!
 						</button>
 					</span>
@@ -55,8 +57,22 @@
 
 <script type="text/javascript">
     $(function(){
-        $("#btn-alert").bind("click",function(){
-            layer.msg('Hello layer');
+        $("#btn-search").bind("click",function(){
+            $.ajax( {
+                url:'/emp/getEmp',
+                data:{
+                    condition : $("#search-condition").val()
+                },
+            type:'post',
+                cache:false,
+                dataType:'json',
+                success:function(data) {
+
+                },
+                error : function() {
+
+                }
+            });
         });
     });
 </script>

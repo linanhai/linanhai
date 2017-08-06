@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lnh.mapper.EmpMapper" >
+<mapper namespace="com.lnh.mapper.EmpMapper">
 
-    <resultMap id="ResultMap" type="com.lnh.bean.EmpBean" >
-        <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="message" property="message" jdbcType="VARCHAR" />
+    <resultMap id="ResultMap" type="com.lnh.bean.EmpBean">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="message" property="message" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <select id="selectEmp" resultMap="ResultMap">
-        select
+    <select id="selectEmp" parameterType="String" resultMap="ResultMap">
+        SELECT
         id, name
-        from emp
+        FROM emp
+        <where>
+            <if test="_parameter!=null and _parameter!=''">
+                id = #{_parameter}
+                OR name like CONCAT('%',#{_parameter},'%')
+            </if>
+        </where>
     </select>
 
 </mapper>

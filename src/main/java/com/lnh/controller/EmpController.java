@@ -18,15 +18,16 @@ import com.lnh.service.EmpService;
  * Created by linanhai on 2017/8/2.
  */
 @Controller
-@RequestMapping("/emp")
+@RequestMapping(value="/emp",method={RequestMethod.POST,RequestMethod.GET})
 public class EmpController {
 
     @Autowired
     private EmpService service;
 
     @RequestMapping("/getEmp")
-    public String getEmp(Model model){
-        model.addAttribute("emps",service.getEmp());
-        return "hello";
+    public String getEmp(Model model,@RequestParam(value="condition", required=false)
+            String condition){
+        model.addAttribute("emps",service.getEmp(condition));
+        return "emp";
     }
 }

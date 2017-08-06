@@ -17,8 +17,8 @@ public class EmpService {
     @Autowired
     private EmpMapper mapper;
 
-    public List<EmpBean> getEmp() {
-        return mapper.selectEmp();
+    public List<EmpBean> getEmp(String condition) {
+        return mapper.selectEmp(condition);
     }
 
 }

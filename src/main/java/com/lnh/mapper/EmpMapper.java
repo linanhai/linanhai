@@ -7,5 +7,5 @@ import java.util.List;
  * Created by linanhai on 2017/8/2.
  */
 public interface EmpMapper {
-    List<EmpBean> selectEmp();
+    List<EmpBean> selectEmp(String condition);
 }
