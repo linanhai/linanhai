@@ -14,30 +14,30 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
     <script type='text/javascript' src="/layer/layer.js"></script>
     <style>
-        .row{
-            margin-left:0;
-            margin-right:0;
+        .col-center-block {
+            float: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 3%;
         }
     </style>
 </head>
 <body>
-<div class="center-block">
-    <form class="bs-example bs-example-form" role="form" id="search-form">
-        <div class="row">
-            <div class="col-lg-5">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="search-condition">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button" id="btn-search">
-							Go!
-						</button>
-					</span>
-                </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
-    </form>
-</div>
-<br>
+
+<form class="bs-example-form" role="form" id="search-form">
+    <div class="col-center-block col-lg-5">
+        <div class="input-group">
+            <input type="text" class="form-control" id="search-condition">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="btn-search">
+                    Go!
+                </button>
+            </span>
+        </div>
+    </div>
+</form>
+
 <table class="table table-hover table-bordered" id="dataTable"
        data-pagination="true"
        data-show-refresh="true"
